@@ -123,7 +123,7 @@
             loadMore: {
                 type: Function,
                 default: null
-            }
+			}
         },
         computed: {
 			...mapState({

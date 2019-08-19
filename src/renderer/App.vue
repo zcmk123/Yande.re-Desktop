@@ -4,7 +4,7 @@
 
 			<el-header>
 			<el-row class="header">
-				<el-col class="header__title">YandeDesktop By DoubleBird</el-col>
+				<el-col class="header__title"><router-link to="/" tag="span">YandeDesktop By DoubleBird</router-link></el-col>
 				<Login />
 			</el-row>
 			</el-header>
@@ -56,6 +56,7 @@
 
 	.header__title {
 		line-height: 60px;
+		cursor: pointer;
 		user-select: none;
 	}
 </style>

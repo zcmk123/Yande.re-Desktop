@@ -7,7 +7,8 @@
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="toLogin"><i class="el-icon-user"></i>{{ !loginState ? '绑定账号' : '编辑账号' }}</el-dropdown-item>
-                <!-- <el-dropdown-item v-if="loginState" command="myfavorite"><i class="el-icon-star-off"></i>我的收藏</el-dropdown-item> -->
+                <el-dropdown-item v-if="loginState" command="toMain"><i class="el-icon-house"></i>首页</el-dropdown-item>
+                <el-dropdown-item v-if="loginState" command="toMyFavorite"><i class="el-icon-star-off"></i>我的收藏</el-dropdown-item>
                 <el-dropdown-item v-if="loginState" command="logout"><i class="login__loginout-icon el-icon-download"></i>注销账号</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
@@ -112,6 +113,12 @@
         methods: {
             handleCommand (command) {
                 this[command]();
+            },
+            toMain () {
+                this.$router.replace('main')
+            },
+            toMyFavorite () {
+                this.$router.replace('MyFavorite')
             },
             toLogin () {
                 this.loginDialogVisible = true

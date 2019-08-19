@@ -1,14 +1,12 @@
 <template>
-	<PictureList :post-list="postList" :load-more="loadMore" :loading="loading" />
+	<PictureList
+	:post-list="postList"
+	:load-more="loadMore"
+	:loading="loading" />
 </template>
-
-<style scoped>
-
-</style>
 
 <script>
 	import PictureList from '@/components/PictureList'
-	import Login from '@/components/Login'
 	
 	export default {
 		data () {
@@ -40,17 +38,21 @@
 				})
 				.then(resp => {
 
-					_this.postList = _this.postList.concat(resp.data)
-					_this.page++
+					if (resp.data.length) {
+						_this.postList = _this.postList.concat(resp.data)
+						_this.page++
+					} else {
+                        _this.$message.error('没有更多数据了')
+					}
 
 					_this.loading = false
 				})
 				.catch(resp => {
 					_this.loading = false
-					_this.$message.error('加载数据失败');
+					_this.$message.error('加载数据失败')
 				})
 			}
 		},
-		components: { Login, PictureList }
+		components: { PictureList }
 	}
 </script>

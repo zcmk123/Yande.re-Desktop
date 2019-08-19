@@ -11,6 +11,11 @@ export default new Router({
       component: () => import('@/view/Index')
     },
     {
+      path: '/MyFavorite',
+      name: 'myfavorite',
+      component: () => import('@/view/MyFavorite')
+    },
+    {
       path: '*',
       redirect: '/'
     }
