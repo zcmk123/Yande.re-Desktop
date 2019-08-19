@@ -5,14 +5,17 @@
 
 ## 预览图
 
-首屏
+Index Page (首屏)
 ![首页](/docImg/1.png)
 
-绑定账号
+Picture Preview (大图预览)
+![大图预览](/docImg/3.png)
+
+Account Management (绑定账号)
 ![绑定账号](/docImg/2.png)
 
 ## TODO (预计完成)
-MyFavorite (我的收藏)
+MyFavorite (我的收藏)  
 i18n (国际化)
 ......
 
