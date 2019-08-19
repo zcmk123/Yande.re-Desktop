@@ -1,8 +1,22 @@
-# yandedesktop
+# YandeDesktop (Yande.re PC桌面版客户端)
 
 > An electron-vue project
+> 一个基于 electron-vue 的Yande.re PC客户端
 
-#### Build Setup
+## 预览图
+
+首屏
+![首页](/docImg/1.png)
+
+绑定账号
+![绑定账号](/docImg/2.png)
+
+## TODO (预计完成)
+MyFavorite (我的收藏)
+i18n (国际化)
+......
+
+#### Build Setup (项目构建)
 
 ``` bash
 # install dependencies
@@ -13,7 +27,6 @@ npm run dev
 
 # build electron application for production
 npm run build
-
 
 # lint all JS/Vue component files in `src/`
 npm run lint
