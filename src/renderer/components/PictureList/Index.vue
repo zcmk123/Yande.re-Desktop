@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-row class="main" :gutter="10" v-loading="loading" element-loading-text="拼命加载中...">
+        <el-row class="main" :gutter="10" v-loading="loading" :element-loading-text="$t('loading') + '...'">
             <el-col :span="4" v-for="(o, i) in postList" :key="o.id"
             style="margin-bottom:25px;">
             <el-card :body-style="{ padding: '0px' }">
@@ -9,7 +9,7 @@
                     <time class="time">{{ new Date(o.created_at * 1000).toDateString() }}</time>
                     <div class="bottom clearfix">
                     <span style="font-size: 13px;">ID: {{ o.id }}</span>
-                    <el-button v-if="loginState" type="text" class="button" @click="vote(o, i)">{{ o.favorite ? '取消收藏' : '添加收藏' }}</el-button>
+                    <el-button v-if="loginState" type="text" class="button" @click="vote(o, i)">{{ o.favorite ? $t('picture_list.remove_favorite') : $t('picture_list.add_favorite') }}</el-button>
                 </div>
                 </div>
             </el-card>
@@ -17,8 +17,8 @@
 
             <el-col v-if="!!loadMore">
                 <span class="main__loadmore-btn" @click="loadMore">
-                    <span v-show="!loading">加载更多...</span>
-                    <span v-show="loading">加载中...<i class="el-icon-loading"></i></span>
+                    <span v-show="!loading" v-t="'picture_list.load_more'"></span>
+                    <span v-show="loading" v-t="'loading'"><i class="el-icon-loading"></i></span>
                 </span>
             </el-col>
 	    </el-row>
@@ -161,16 +161,16 @@
 				})
 				.then(resp => {
 					if (!post.favorite) {
-						_this.$message.success('收藏成功')
+						_this.$message.success(_this.$t('picture_list.add_fav_success_tips'))
 						post.favorite = true
 					} else {
-						_this.$message.success('取消收藏成功')
+						_this.$message.success(_this.$t('picture_list.remove_fav_success_tips'))
 						post.favorite = false
 					}
 					_this.$set(_this.postList, index, _.clone(post))
 				})
 				.catch(resp => {
-					_this.$message.error('收藏、取消收藏失败')
+					_this.$message.error(_this.$t('picture_list.favorite_fail_tips'))
 				})
 
 			}

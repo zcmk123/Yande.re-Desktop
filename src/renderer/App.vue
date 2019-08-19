@@ -56,7 +56,10 @@
 
 	.header__title {
 		line-height: 60px;
-		cursor: pointer;
 		user-select: none;
+	}
+
+	.header__title span {
+		cursor: pointer;
 	}
 </style>

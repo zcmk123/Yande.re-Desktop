@@ -3,33 +3,33 @@
         <el-dropdown trigger="click" @command="handleCommand">
             <span class="el-dropdown-link login__container">
                 <el-avatar size="medium" :src="avatarImg"></el-avatar>
-                <span class="login__name" :title="displayName">{{ loginState && displayName ? displayName : '未绑定账号' }}</span>
+                <span class="login__name" :title="displayName">{{ loginState && displayName ? displayName : $t('header.login') }}</span>
             </span>
             <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="toLogin"><i class="el-icon-user"></i>{{ !loginState ? '绑定账号' : '编辑账号' }}</el-dropdown-item>
-                <el-dropdown-item v-if="loginState" command="toMain"><i class="el-icon-house"></i>首页</el-dropdown-item>
-                <el-dropdown-item v-if="loginState" command="toMyFavorite"><i class="el-icon-star-off"></i>我的收藏</el-dropdown-item>
-                <el-dropdown-item v-if="loginState" command="logout"><i class="login__loginout-icon el-icon-download"></i>注销账号</el-dropdown-item>
+                <el-dropdown-item command="toLogin"><i class="el-icon-user"></i>{{ !loginState ? $t('header.login') : $t('header.edit_account') }}</el-dropdown-item>
+                <el-dropdown-item v-if="loginState" command="toMain"><i class="el-icon-house"></i>{{ $t('header.home_page') }}</el-dropdown-item>
+                <el-dropdown-item v-if="loginState" command="toMyFavorite"><i class="el-icon-star-off"></i>{{ $t('header.my_favorite') }}</el-dropdown-item>
+                <el-dropdown-item v-if="loginState" command="logout"><i class="login__loginout-icon el-icon-download"></i>{{ $t('header.logout') }}</el-dropdown-item>
             </el-dropdown-menu>
         </el-dropdown>
 
         <!-- 登录弹窗 -->
         <el-dialog
-        title="绑定账号"
+        :title="$t('header.login')"
         :visible.sync="loginDialogVisible"
         v-loading="loginForm.loginLoading"
         width="30%">
-            <el-form ref="loginForm" :model="loginForm" label-width="80px">
-                <el-form-item label="登录账号" prop="loginName" :rules="{ required: true, message: '请输入登录账号' }">
+            <el-form ref="loginForm" :model="loginForm" label-width="100px">
+                <el-form-item :label="$t('header.login_form.login_name')" prop="loginName" :rules="{ required: true, message: $t('header.login_form.name_empty_tips') }">
                     <el-input v-model="loginForm.loginName" autocomplete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="登录密码" prop="loginPass" :rules="{ required: true, message: '请输入登录密码' }">
+                <el-form-item :label="$t('header.login_form.login_pass')" prop="loginPass" :rules="{ required: true, message: $t('header.login_form.pass_empty_tips') }">
                     <el-input v-model="loginForm.loginPass" type="password" autocomplete="off"></el-input>
                 </el-form-item>
             </el-form>
             <span slot="footer" class="dialog-footer">
-                <el-button @click="loginDialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="login">确 定</el-button>
+                <el-button @click="loginDialogVisible = false">{{ $t('cancel') }}</el-button>
+                <el-button type="primary" @click="login">{{ $t('confirm') }}</el-button>
             </span>
         </el-dialog>
 
@@ -158,13 +158,14 @@
             },
             // 注销登录
             logout () {
-                this.$confirm('确认要注销账号吗？')
+                this.$confirm(this.$t('header.logout_confirm_tips'))
                 .then(() => {
                     this.loginForm.loginName = this.loginForm.loginPass = ''
                     cookie.clearCookies()
                     this.$store.dispatch('resetLoginInfo')
                     this.avatarImg = DEFAULT_AVATAR
-                    this.$message.success('注销成功')
+                    this.$message.success(this.$t('header.logout_tips'))
+                    this.$router.replace('/')
                 })
 
             },
@@ -179,6 +180,7 @@
                     return Promise.resolve(resp.data[0].id)
                 })
             },
+            // sha1加密密码
             cryptPass (passWord) {
                 return crypto.createHash('sha1').update(`choujin-steiner--${passWord}--`).digest('hex')
             }
