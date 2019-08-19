@@ -46,7 +46,7 @@
       "icon": "build/icons/icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "favicon.ico"
     },
     "nsis": {
       "oneClick": false,
