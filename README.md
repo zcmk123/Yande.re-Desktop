@@ -15,8 +15,9 @@ Account Management (绑定账号)
 ![绑定账号](/docImg/2.png)
 
 ## TODO (预计完成)
-MyFavorite (我的收藏)  
-i18n (国际化)
+MyFavorite (我的收藏) --- Partial Complete (部分完成)  
+i18n (国际化) --- √ Ready to use (可用)  
+Picture Download (图片下载) --- In Queue (准备开发)  
 ......
 
 #### Build Setup (项目构建)
