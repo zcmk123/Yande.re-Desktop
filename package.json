@@ -60,7 +60,7 @@
     "axios": "^0.18.0",
     "electron-cookies": "heap/electron-cookies",
     "element-ui": "^2.11.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "qs": "^6.8.0",
     "v-viewer": "^1.4.2",
     "vue": "^2.5.16",
