@@ -3,6 +3,8 @@
 > An electron-vue project
 > 一个基于 electron-vue 的Yande.re PC客户端
 
+> 项目老旧暂已不维护 打包出一个可用的windows客户端安装文件，有需要自取 https://github.com/zcmk123/Yande.re-Desktop/releases/download/1.0.0/YandeDesktop.Setup.1.0.0.exe
+
 ## 预览图
 
 Index Page (首屏)
